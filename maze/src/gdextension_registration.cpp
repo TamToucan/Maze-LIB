@@ -5,12 +5,16 @@
 #include <godot_cpp/godot.hpp>
 #include "GDMaze.hpp"
 
+#include "Debug.h"
+
 using namespace godot;
 
 void initialize_libgdmaze(ModuleInitializationLevel p_level) {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+	if (p_level != MODULE_INITIALIZATION_LEVEL_CORE) {
 		return;
 	}
+	SET_DEBUG("ALL");
+	LOG_INFO("################# REGISTER GDMaze");
 	ClassDB::register_class<GDMaze>();
 }
 
