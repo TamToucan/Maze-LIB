@@ -1,4 +1,4 @@
-project(GDMaze)
+project(Maze-Lib)
 SET(LIB_NAME GDMaze) 
 
 # Automatically pick up files added to src

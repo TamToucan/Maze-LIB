@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 
 if (NOT ALL_SUBS_BUILD_ON)
     set(FETCHCONTENT_QUIET OFF)
-    project(maze-lib)
+    project(Maze-Lib)
     set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
     
     set(CMAKE_CXX_STANDARD 17)
