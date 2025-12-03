@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 
 if (NOT ALL_SUBS_BUILD_ON)
     set(FETCHCONTENT_QUIET OFF)
-    project(gdextension-maze)
+    project(maze-lib)
     set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
     
     set(CMAKE_CXX_STANDARD 17)
@@ -27,7 +27,7 @@ if (NOT ALL_SUBS_BUILD_ON)
     
     FetchContent_MakeAvailable(GDExtension Libs)
 else()
-    message(STATUS "GDMaze-EXT is being built as part of Lott-EXT, skipping FetchContent.")
+	message(STATUS "Maze-LIB is being built as part of Lott-LIB, skipping FetchContent.")
 endif()
     
 add_subdirectory(maze)
