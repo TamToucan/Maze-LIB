@@ -1,0 +1,3 @@
+/app/custom/_deps/gdextension-subbuild/CMakeFiles/gdextension-populate.dir
+/app/custom/_deps/gdextension-subbuild/CMakeFiles/edit_cache.dir
+/app/custom/_deps/gdextension-subbuild/CMakeFiles/rebuild_cache.dir

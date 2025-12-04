@@ -1,0 +1,46 @@
+{
+	"sources" :
+	[
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/CMakeFiles/libs-populate"
+		},
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/CMakeFiles/libs-populate.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/CMakeFiles/libs-populate-complete.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/libs-populate-prefix/src/libs-populate-stamp/libs-populate-build.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/libs-populate-prefix/src/libs-populate-stamp/libs-populate-configure.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/libs-populate-prefix/src/libs-populate-stamp/libs-populate-download.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/libs-populate-prefix/src/libs-populate-stamp/libs-populate-install.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/libs-populate-prefix/src/libs-populate-stamp/libs-populate-mkdir.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/libs-populate-prefix/src/libs-populate-stamp/libs-populate-patch.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/libs-populate-prefix/src/libs-populate-stamp/libs-populate-test.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/libs-subbuild/libs-populate-prefix/src/libs-populate-stamp/libs-populate-update.rule"
+		}
+	],
+	"target" :
+	{
+		"labels" :
+		[
+			"libs-populate"
+		],
+		"name" : "libs-populate"
+	}
+}

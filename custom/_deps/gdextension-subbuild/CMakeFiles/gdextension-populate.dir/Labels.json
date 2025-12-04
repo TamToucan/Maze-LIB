@@ -1,0 +1,46 @@
+{
+	"sources" :
+	[
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/CMakeFiles/gdextension-populate"
+		},
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/CMakeFiles/gdextension-populate.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/CMakeFiles/gdextension-populate-complete.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/gdextension-populate-prefix/src/gdextension-populate-stamp/gdextension-populate-build.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/gdextension-populate-prefix/src/gdextension-populate-stamp/gdextension-populate-configure.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/gdextension-populate-prefix/src/gdextension-populate-stamp/gdextension-populate-download.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/gdextension-populate-prefix/src/gdextension-populate-stamp/gdextension-populate-install.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/gdextension-populate-prefix/src/gdextension-populate-stamp/gdextension-populate-mkdir.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/gdextension-populate-prefix/src/gdextension-populate-stamp/gdextension-populate-patch.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/gdextension-populate-prefix/src/gdextension-populate-stamp/gdextension-populate-test.rule"
+		},
+		{
+			"file" : "/app/custom/_deps/gdextension-subbuild/gdextension-populate-prefix/src/gdextension-populate-stamp/gdextension-populate-update.rule"
+		}
+	],
+	"target" :
+	{
+		"labels" :
+		[
+			"gdextension-populate"
+		],
+		"name" : "gdextension-populate"
+	}
+}

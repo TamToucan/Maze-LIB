@@ -1,0 +1,3 @@
+/app/custom/_deps/libs-subbuild/CMakeFiles/libs-populate.dir
+/app/custom/_deps/libs-subbuild/CMakeFiles/edit_cache.dir
+/app/custom/_deps/libs-subbuild/CMakeFiles/rebuild_cache.dir
