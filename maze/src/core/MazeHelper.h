@@ -12,42 +12,58 @@
 // Helper functions
 //
 
-#include "TileData.h"
-#include "CellType.h"
 #include "CellLoc.h"
+#include "CellType.h"
+#include "TileData.h"
 
-namespace Maze { class Node; }
+namespace Maze {
+class Node;
+class MazeData;
+} // namespace Maze
 
 namespace Maze {
 
-class MazeHelper
-{
+class MazeHelper {
 public:
+  //
+  // Helper function to populate a vector with all the Nodes
+  // Provided since navigating the tree is often using a recursive
+  // function which if the Maze is very big can cause stack problems
+  //
+  typedef std::vector<Node *> NodeList;
+  static void makeNodeList(Node *pRoot, NodeList &rNodeList);
 
-    //
-    // Helper function to populate a vector with all the Nodes
-    // Provided since navigating the tree is often using a recursive
-    // function which if the Maze is very big can cause stack problems
-    //
-    typedef std::vector<Node*> NodeList;
-    static void makeNodeList(Node* pRoot, NodeList& rNodeList);
+  //
+  // Helper function to delete all the Nodes
+  //
+  static void deleteMaze(Node *pRoot);
 
-    //
-    // Helper function to delete all the Nodes
-    //
-    static void deleteMaze(Node* pRoot);
+  //
+  // Defines square tile data with exits 0..3 = NSEW
+  //
+  static void makeSquareTileData(TileData &outData,
+                                 const CellType roomType = 0);
 
-    //
-    // Defines square tile data with exits 0..3 = NSEW
-    //
-    static void makeSquareTileData(TileData& outData, const CellType roomType=0);
+  //
+  // Find node with given CellLoc (not efficient!)
+  //
+  static const Maze::Node *findNode(const Maze::Node *pRoot,
+                                    const Maze::CellLoc &loc);
 
-    //
-    // Find node with given CellLoc (not efficient!)
-    //
-    static const Maze::Node* findNode(const Maze::Node* pRoot, const Maze::CellLoc& loc);
+  //
+  // Find node with given coordinates (x,y)
+  //
+  static const Maze::Node *findNode(const Maze::Node *pRoot, int x, int y);
+
+  //
+  // Generate a square maze
+  //
+  static MazeData *generateSquareMaze(int width, int height, int startX,
+                                      int startY, bool wrap, bool singlePath,
+                                      bool noDeadEnds, int openPlanChance,
+                                      unsigned int seed);
 };
 
-} // namespace
+} // namespace Maze
 
 #endif /* MAZEHELPER_H_ */
