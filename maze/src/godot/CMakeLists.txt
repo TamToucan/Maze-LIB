@@ -27,4 +27,10 @@ add_custom_command(
         TARGET GDMaze  POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy
                 ${CMAKE_CURRENT_BINARY_DIR}/$<TARGET_FILE_NAME:GDMaze>
+			    "D:/git/the-lott/addons/gdmaze/bin"
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_CURRENT_BINARY_DIR}/../core/$<TARGET_FILE_NAME:maze>
 			    "D:/git/the-lott/addons/gdmaze/bin")
+
+
+
