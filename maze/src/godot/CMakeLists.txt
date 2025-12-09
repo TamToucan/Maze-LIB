@@ -19,6 +19,7 @@ target_link_libraries(GDMaze
 )
 
 set_target_properties(GDMaze PROPERTIES OUTPUT_NAME GDMaze)
+set_target_properties(GDMaze PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 if(NOT MSVC)
 	set_target_properties(GDMaze PROPERTIES PREFIX "")
 endif()

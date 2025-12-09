@@ -25,6 +25,7 @@ target_link_libraries(maze
 )
 
 set_target_properties(maze PROPERTIES OUTPUT_NAME maze)
+set_target_properties(maze PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 if(NOT MSVC)
 	set_target_properties(maze PROPERTIES PREFIX "")
 endif()
