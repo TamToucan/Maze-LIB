@@ -1,3 +1,5 @@
 add_subdirectory(src/core)
-add_subdirectory(src/godot)
+if(BUILD_GODOT_MAZE)
+    add_subdirectory(src/godot)
+endif()
 add_subdirectory(test)
