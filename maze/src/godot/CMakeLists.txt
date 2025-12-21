@@ -1,3 +1,4 @@
+# --- maze/src/godot/CMakeLists.txt ---
 
 add_library(GDMaze SHARED)
 
@@ -8,30 +9,41 @@ target_sources(GDMaze PRIVATE
     gdextension_registration.hpp
 )
 
+# Includes
 target_include_directories(GDMaze PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+# Note: linking 'maze' below usually handles the core include automatically 
+# if the core CMake is set up right, but keeping this explicitly is fine/safe.
 target_include_directories(GDMaze PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../core")
 
+# Linking
 target_link_libraries(GDMaze
-    PRIVATE maze
-    PRIVATE Random
-    PRIVATE MathStuff
-    PUBLIC godot::cpp
+    PRIVATE maze         # The Core Lib
+    PRIVATE Random       # From Libs repo
+    PRIVATE MathStuff    # From Libs repo
+    PUBLIC godot::cpp    # From Godot FetchContent
 )
 
+# Properties
 set_target_properties(GDMaze PROPERTIES OUTPUT_NAME GDMaze)
 set_target_properties(GDMaze PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
+# MinGW/Windows cleanup (removes 'lib' prefix)
 if(NOT MSVC)
-	set_target_properties(GDMaze PROPERTIES PREFIX "")
+    set_target_properties(GDMaze PROPERTIES PREFIX "")
 endif()
 
-add_custom_command(
-        TARGET GDMaze  POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-                ${CMAKE_CURRENT_BINARY_DIR}/$<TARGET_FILE_NAME:GDMaze>
-			    "D:/git/the-lott/addons/gdmaze/bin"
-        COMMAND ${CMAKE_COMMAND} -E copy
-                ${CMAKE_CURRENT_BINARY_DIR}/../core/$<TARGET_FILE_NAME:maze>
-			    "D:/git/the-lott/addons/gdmaze/bin")
-
-
+# Post-Build Copy
+# I used generator expressions ($<TARGET_FILE:...>) which are safer than manual paths.
+# They automatically find the .dll/.so regardless of where CMake built it.
+add_custom_command(TARGET GDMaze POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_FILE:GDMaze>
+        "D:/git/the-lott/addons/gdmaze/bin/"
+    
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_FILE:maze>
+        "D:/git/the-lott/addons/gdmaze/bin/"
+        
+    COMMENT "Copying GDMaze and Core Maze DLLs to Godot project"
+)
 

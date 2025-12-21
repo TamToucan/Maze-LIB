@@ -1,4 +1,7 @@
 add_subdirectory(src/core)
+if(BUILD_CUTE_MAZE)
+    add_subdirectory(src/cute)
+endif()
 if(BUILD_GODOT_MAZE)
     add_subdirectory(src/godot)
 endif()
