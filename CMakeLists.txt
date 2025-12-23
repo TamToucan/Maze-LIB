@@ -82,12 +82,5 @@ endif()
 
 # --- 3. Cute Framework Target ---
 if(BUILD_CUTE AND CUTE_FOUND)
-    # Define the library for the Cute wrapper
-    add_library(CuteMaze SHARED maze/src/cute/cuteMaze.cpp)
-    
-    # Link against the Core Maze logic and the imported 'cute' target
-    target_link_libraries(CuteMaze PRIVATE Maze cute)
-    
-    # Ensure this library can find its own headers
-    target_include_directories(CuteMaze PRIVATE src/cute)
+    add_subdirectory(maze/src/cute)
 endif()

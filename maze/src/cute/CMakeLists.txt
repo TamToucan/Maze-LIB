@@ -2,17 +2,17 @@
 add_library(CuteMaze SHARED)
 
 target_sources(CuteMaze PRIVATE
-	CuteMaze.cpp
-	CuteMaze.hpp
+	cuteMaze.cpp
 )
 
 target_include_directories(CuteMaze PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 target_include_directories(CuteMaze PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../core")
 
 target_link_libraries(CuteMaze
-    PRIVATE maze
+    PRIVATE Maze
     PRIVATE Random
     PRIVATE MathStuff
+    PRIVATE cute_lib
 )
 
 set_target_properties(CuteMaze PROPERTIES OUTPUT_NAME CuteMaze)
