@@ -17,7 +17,7 @@ target_include_directories(GDMaze PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../core")
 
 # Linking
 target_link_libraries(GDMaze
-    PRIVATE maze         # The Core Lib
+    PRIVATE Maze         # The Core Lib
     PRIVATE Random       # From Libs repo
     PRIVATE MathStuff    # From Libs repo
     PUBLIC godot::cpp    # From Godot FetchContent
@@ -41,7 +41,7 @@ add_custom_command(TARGET GDMaze POST_BUILD
         "D:/git/the-lott/addons/gdmaze/bin/"
     
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        $<TARGET_FILE:maze>
+        $<TARGET_FILE:Maze>
         "D:/git/the-lott/addons/gdmaze/bin/"
         
     COMMENT "Copying GDMaze and Core Maze DLLs to Godot project"

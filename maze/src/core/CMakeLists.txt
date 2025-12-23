@@ -1,10 +1,10 @@
 # 1. Define the Core Library
 # We use SHARED to ensure it works as a DLL/So, beneficial for Godot GDExtension later
-add_library(maze SHARED)
+add_library(Maze SHARED)
 
 # 2. Add Sources
 # Kept your .C extension (Standard C++), but ensure your IDE treats them as C++
-target_sources(maze PRIVATE
+target_sources(Maze PRIVATE
     CellLoc.C
     CellLoc.h
     CellType.h
@@ -22,7 +22,7 @@ target_sources(maze PRIVATE
 
 # 3. Include Directories
 # This adds the current folder to the include path so you can #include "MazeData.h" directly
-target_include_directories(maze PUBLIC 
+target_include_directories(Maze PUBLIC 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<INSTALL_INTERFACE:include> 
 )
@@ -30,14 +30,14 @@ target_include_directories(maze PUBLIC
 # 4. Link Dependencies
 # These targets (Random, MathStuff) must be provided by the 'Libs' repo 
 # which is fetched by your ROOT CMake file.
-target_link_libraries(maze 
+target_link_libraries(Maze 
     PRIVATE Random 
     PRIVATE MathStuff
 )
 
 # 5. Windows / MinGW Specific Settings
-set_target_properties(maze PROPERTIES 
-    OUTPUT_NAME "maze"
+set_target_properties(Maze PROPERTIES 
+    OUTPUT_NAME "Maze"
     WINDOWS_EXPORT_ALL_SYMBOLS ON  # Critical for MinGW shared libraries
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
@@ -45,5 +45,5 @@ set_target_properties(maze PROPERTIES
 
 # Remove the "lib" prefix on Windows (optional, personal preference)
 if(MINGW OR MSVC)
-    set_target_properties(maze PROPERTIES PREFIX "")
+    set_target_properties(Maze PROPERTIES PREFIX "")
 endif()
