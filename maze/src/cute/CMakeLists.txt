@@ -21,5 +21,17 @@ if(NOT MSVC)
 	set_target_properties(CuteMaze PROPERTIES PREFIX "")
 endif()
 
+# Windows: Copy dependencies next to CuteMaze so tests can run
+add_custom_command(TARGET CuteMaze POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    $<TARGET_FILE:Maze>
+    $<TARGET_FILE_DIR:CuteMaze>
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    $<TARGET_FILE:cute>
+    $<TARGET_FILE_DIR:CuteMaze>
+)
+
+
+
 
 

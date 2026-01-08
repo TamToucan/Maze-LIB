@@ -34,33 +34,31 @@ if(NOT ALL_SUBS_BUILD_ON)
     if(BUILD_CUTE)
         set(CUTE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/deps/cute")
 
-        # Check for the main static library file
-        if(EXISTS "${CUTE_ROOT}/lib/libcute.a")
+        if(EXISTS "${CUTE_ROOT}/lib/libcute.dll.a")
+            message(STATUS "Found Cute DLL Import Library: ${CUTE_ROOT}/lib/libcute.dll.a")
             set(CUTE_FOUND ON)
-
-            # Define 'cute' as a pre-built static library
+            add_library(cute SHARED IMPORTED GLOBAL)
+            set_target_properties(cute PROPERTIES
+                IMPORTED_IMPLIB "${CUTE_ROOT}/lib/libcute.dll.a"
+                IMPORTED_LOCATION "${CUTE_ROOT}/bin/libcute.dll"
+                INTERFACE_INCLUDE_DIRECTORIES "${CUTE_ROOT}/include;${CUTE_ROOT}"
+            )
+            add_library(cute_lib ALIAS cute)
+        elseif(EXISTS "${CUTE_ROOT}/lib/libcute.a")
+            message(STATUS "Found Cute Static Library: ${CUTE_ROOT}/lib/libcute.a")
+            set(CUTE_FOUND ON)
             add_library(cute STATIC IMPORTED GLOBAL)
-
-            # Set the location of the main library and headers
             set_target_properties(cute PROPERTIES
                 IMPORTED_LOCATION "${CUTE_ROOT}/lib/libcute.a"
                 INTERFACE_INCLUDE_DIRECTORIES "${CUTE_ROOT}/include;${CUTE_ROOT}"
+                INTERFACE_COMPILE_DEFINITIONS "CF_STATIC"
             )
-
-            # --- HANDLE STATIC DEPENDENCIES (PhysFS, SPIRV) ---
-            # Static libs don't link their own deps automatically. We must explicitly 
-            # tell CMake that linking 'cute' requires linking the other .a files in lib/.
             file(GLOB CUTE_DEPENDENCIES "${CUTE_ROOT}/lib/*.a")
-            
-            # Remove libcute.a from this list to avoid circular linking warnings
             list(REMOVE_ITEM CUTE_DEPENDENCIES "${CUTE_ROOT}/lib/libcute.a")
-
-            # Attach these dependencies to the 'cute' target
             set_target_properties(cute PROPERTIES INTERFACE_LINK_LIBRARIES "${CUTE_DEPENDENCIES}")
-
-            message(STATUS "Found Cute Framework: ${CUTE_ROOT}")
+            add_library(cute_lib ALIAS cute)
         else()
-            message(FATAL_ERROR "Static library libcute.a not found at ${CUTE_ROOT}/lib/.\nPlease run setup.sh or ensure you have built the dependencies.")
+            message(FATAL_ERROR "Framework library not found at ${CUTE_ROOT}/lib/.")
         endif()
     endif()
 endif()
