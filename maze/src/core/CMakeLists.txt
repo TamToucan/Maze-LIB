@@ -33,6 +33,7 @@ target_include_directories(Maze PUBLIC
 target_link_libraries(Maze 
     PRIVATE Random 
     PRIVATE MathStuff
+    PUBLIC Util
 )
 
 # 5. Windows / MinGW Specific Settings
